@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+<<<<<<< HEAD
   - prop1
   - prop2
   - prop3
@@ -21,6 +22,8 @@ TagManager:
   - prop14
   - prop15
   - prop16
+=======
+>>>>>>> copen223
   layers:
   - Default
   - TransparentFX

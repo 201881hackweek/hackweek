@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+<<<<<<< HEAD
+=======
+    //状态值
+    public int life;
+    public int damage;
+
+>>>>>>> copen223
     //状态
     public bool isJumping;
     public bool isMovingX;
@@ -25,11 +32,22 @@ public class Player : MonoBehaviour {
     public Rigidbody2D rigidbody2;
     public Animator animator;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> copen223
 	// Use this for initialization
 	void Start () {
 
         rigidbody2 = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
+<<<<<<< HEAD
+=======
+        //值初始化
+        life = 3;
+        damage = 1;
+
+>>>>>>> copen223
         //状态初始化
         isJumping = false;
         isMovingX = false;
@@ -50,6 +68,10 @@ public class Player : MonoBehaviour {
         //检测
         CheckLanding();             //根据着地更新状态
         AlterByState();             //根据状态更新限制条件
+<<<<<<< HEAD
+=======
+        
+>>>>>>> copen223
 
         //移动操作
         moveVal = Input.GetAxis("Horizontal");
@@ -79,6 +101,10 @@ public class Player : MonoBehaviour {
 
         isStaticX = false;
         isMovingX = true;
+<<<<<<< HEAD
+=======
+        ShowAnimation();
+>>>>>>> copen223
     }
 
     void StopMovingX()
@@ -87,6 +113,10 @@ public class Player : MonoBehaviour {
 
         isStaticX = true;
         isMovingX = false;
+<<<<<<< HEAD
+=======
+        ShowAnimation();
+>>>>>>> copen223
     }
 
     //跳跃
@@ -95,9 +125,15 @@ public class Player : MonoBehaviour {
         rigidbody2.velocity = new Vector2(rigidbody2.velocity.x,jumpSpeed * jumpVal);
 
         isJumping = true;
+<<<<<<< HEAD
     }
 
 
+=======
+        ShowAnimation();
+    }
+
+>>>>>>> copen223
     //根据状态修改限制条件
     void AlterByState()
     {
@@ -119,7 +155,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+<<<<<<< HEAD
    
+=======
+>>>>>>> copen223
     //检测着地状态
     public void CheckLanding()
     {
@@ -128,8 +167,13 @@ public class Player : MonoBehaviour {
         LayerMask layerMask;    //检测对象层
         float depth;            //检测深度
 
+<<<<<<< HEAD
         depth = 1.2f;
         origin = transform.position;
+=======
+        depth = 1.4f;
+        origin = transform.position-new Vector3();
+>>>>>>> copen223
         direction = Vector3.down;                       
         layerMask = LayerMask.GetMask("Obstacle");      //对象层为障碍
 
@@ -144,4 +188,43 @@ public class Player : MonoBehaviour {
         else
             isLanding = false;
     }
+<<<<<<< HEAD
+=======
+
+    //生命值相关
+    public void ReduceLife(int n)
+    {
+        life -= n;
+        CheckLife();
+    }
+    void CheckLife()
+    {
+        if (life <= 0)
+            Debug.Log("GameOver");
+    }
+
+    //动画相关
+    public void ShowAnimation()
+    {
+        //0Idle1跳 2跑 3走
+        if(isLanding&&isMovingX)
+        {
+            if (animator.GetInteger("State") == 3)
+                return;
+            animator.SetInteger("State", 3);
+        }
+        if(isLanding&&isStaticX)
+        {
+            if (animator.GetInteger("State") == 0)
+                return;
+            animator.SetInteger("State", 0);
+        }
+        if(isJumping)
+        {
+            if (animator.GetInteger("State") == 1)
+                return;
+            animator.SetInteger("State", 1);
+        }
+    }
+>>>>>>> copen223
 }

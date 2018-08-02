@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    //状态值
+    public int life;
+    public int damage;
+
     //状态
     public bool isJumping;
     public bool isMovingX;
@@ -31,6 +35,10 @@ public class Player : MonoBehaviour {
 
         rigidbody2 = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
+        //值初始化
+        life = 3;
+        damage = 1;
+
         //状态初始化
         isJumping = false;
         isMovingX = false;
@@ -98,7 +106,6 @@ public class Player : MonoBehaviour {
         isJumping = true;
     }
 
-
     //根据状态修改限制条件
     void AlterByState()
     {
@@ -120,7 +127,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-   
     //检测着地状态
     public void CheckLanding()
     {
@@ -145,4 +151,18 @@ public class Player : MonoBehaviour {
         else
             isLanding = false;
     }
+
+    //生命值相关
+    public void ReduceLife(int n)
+    {
+        life -= n;
+        CheckLife();
+    }
+    void CheckLife()
+    {
+        if (life <= 0)
+            Debug.Log("GameOver");
+    }
+
+    //设计相关
 }

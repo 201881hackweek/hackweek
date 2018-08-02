@@ -59,6 +59,7 @@ public class Player : MonoBehaviour {
         //检测
         CheckLanding();             //根据着地更新状态
         AlterByState();             //根据状态更新限制条件
+        
 
         //移动操作
         moveVal = Input.GetAxis("Horizontal");
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour {
 
         isStaticX = false;
         isMovingX = true;
+        ShowAnimation();
     }
 
     void StopMovingX()
@@ -96,6 +98,7 @@ public class Player : MonoBehaviour {
 
         isStaticX = true;
         isMovingX = false;
+        ShowAnimation();
     }
 
     //跳跃
@@ -104,6 +107,7 @@ public class Player : MonoBehaviour {
         rigidbody2.velocity = new Vector2(rigidbody2.velocity.x,jumpSpeed * jumpVal);
 
         isJumping = true;
+        ShowAnimation();
     }
 
     //根据状态修改限制条件
@@ -135,7 +139,7 @@ public class Player : MonoBehaviour {
         LayerMask layerMask;    //检测对象层
         float depth;            //检测深度
 
-        depth = 1.2f;
+        depth = 1.4f;
         origin = transform.position-new Vector3();
         direction = Vector3.down;                       
         layerMask = LayerMask.GetMask("Obstacle");      //对象层为障碍
@@ -164,5 +168,27 @@ public class Player : MonoBehaviour {
             Debug.Log("GameOver");
     }
 
-    //设计相关
+    //动画相关
+    public void ShowAnimation()
+    {
+        //0Idle1跳 2跑 3走
+        if(isLanding&&isMovingX)
+        {
+            if (animator.GetInteger("State") == 3)
+                return;
+            animator.SetInteger("State", 3);
+        }
+        if(isLanding&&isStaticX)
+        {
+            if (animator.GetInteger("State") == 0)
+                return;
+            animator.SetInteger("State", 0);
+        }
+        if(isJumping)
+        {
+            if (animator.GetInteger("State") == 1)
+                return;
+            animator.SetInteger("State", 1);
+        }
+    }
 }

@@ -33,12 +33,12 @@ public class Gun : MonoBehaviour {
     {
         Vector2 dir, realDir;                           //目标瞄准位置和实际瞄准位置
         float angle, realAngle, timer, bulletSpeed;     //最大范围误差角，实际误差角以及瞄准精确所需最小时间，子弹速度
-        int error;                                      //最大范围误差参数
+        int error;                                      //最大范围误差参数 越小 误差范围越大
 
         timer = 1f;
         bulletSpeed = 10f;
         dir = hitDir;
-        error = 8;
+        error = 5;
        
         while (true)
         {

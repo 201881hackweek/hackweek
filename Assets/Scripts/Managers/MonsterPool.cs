@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool : MonoBehaviour
-{
+public class MonsterPool : MonoBehaviour {
 
-    public static Pool instance;
+    public static MonsterPool instance;
     public List<GameObject> objects;
     public GameObject[] objectPrefabs;
     public GameObject poolParent;
@@ -36,7 +35,7 @@ public class Pool : MonoBehaviour
         }
 
         //初始化数据 
-        poolAmount = 5;
+        poolAmount = 15;
         objectIndex = 0;
         lockPool = false;
 
@@ -44,7 +43,7 @@ public class Pool : MonoBehaviour
         objects = new List<GameObject>();
         for (int i = 0; i < poolAmount; i++)
         {
-            objects.Add(Instantiate(objectPrefabs[Random.Range( 0,objectPrefabs.Length)], poolParent.transform));
+            objects.Add(Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Length)], poolParent.transform));
             objects[i].SetActive(false);
         }
     }
@@ -80,10 +79,8 @@ public class Pool : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             objects.Add(Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Length)], poolParent.transform));
-            objects[objects.Count-1].SetActive(false);
+            objects[objects.Count - 1].SetActive(false);
         }
         poolAmount += n;
     }
-
-
 }

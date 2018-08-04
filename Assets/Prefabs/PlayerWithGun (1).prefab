@@ -254,7 +254,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1257034805411744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.37960267, y: -0.20239782, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 4535999367510024}
@@ -282,7 +282,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1871450875194496}
   m_LocalRotation: {x: -0, y: -0, z: -0.26081666, w: 0.96538836}
-  m_LocalPosition: {x: 0.077256, y: 0.19343844, z: 0}
+  m_LocalPosition: {x: 0.077256, y: 0.1934384, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4707550068502354}
@@ -308,7 +308,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164017520660254}
   m_LocalRotation: {x: -0, y: -0, z: 0.09652722, w: -0.9953304}
-  m_LocalPosition: {x: -0.01831904, y: -0.17076129, z: 0}
+  m_LocalPosition: {x: -0.01831904, y: -0.1707613, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4707550068502354}
@@ -472,12 +472,19 @@ MonoBehaviour:
   isMovingX: 0
   isStaticX: 0
   isLanding: 0
+  isRunning: 0
+  isCorching: 0
   canJump: 0
   canMove: 0
+  canRun: 0
+  canCorch: 0
   jumpVal: 0
   jumpSpeed: 0
+  walkSpeed: 0
+  runSpeed: 0
   moveVal: 0
   moveSpeed: 0
+  verVal: 0
   scaleX: 0
   rigidbody2: {fileID: 0}
   animator: {fileID: 0}
